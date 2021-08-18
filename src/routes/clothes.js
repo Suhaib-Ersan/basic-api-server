@@ -3,19 +3,13 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-  createCloth,
-  getAllCloth,
-  getOneCloth,
-  updateCloth,
-  deleteCloth,
-} = require('../../business/routes-implantation.js');
+const { Clothes } = require('../models/index.model.js');
 
-router.post('/cloth', createCloth);
-router.get('/cloth', getAllCloth);
-router.get('/cloth/:id', getOneCloth);
-router.put('/cloth/:id', updateCloth);
-router.delete('/cloth/:id', deleteCloth);
+router.post('/cloth', Clothes.create); // creates one cloth obj
+router.get('/cloth', Clothes.getAll); // gets all clothes objs
+router.get('/cloth/:id', Clothes.getOne); // gets one cloth obj
+router.put('/cloth/:id', Clothes.update); // updates one cloth obj
+router.delete('/cloth/:id', Clothes.delete); // deletes one cloth obj
 
 
 module.exports = router;
