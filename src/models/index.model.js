@@ -3,7 +3,8 @@
 // const POSTGRES_URI = process.env.POSTGRES_URI || 'postgres://localhost/foods';
 const POSTGRES_URI = process.env.POSTGRES_URI || "postgres://suhaib@localhost:5432/foods";
 const { Sequelize, DataTypes } = require('sequelize');
-var  sequelize = new Sequelize(POSTGRES_URI, {});
+var sequelize = new Sequelize(POSTGRES_URI, {});
+
 
 const foods = require('./foods.model.js');
 const clothes = require('./clothes.model.js');

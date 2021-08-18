@@ -1,6 +1,5 @@
 'use strict';
 
-console.log('sequelize >>>>>>>>>>>>>> ',sequelize);
 
 const Foods = (sequelize, DataTypes) => sequelize.define('foods', {
     foodName: {
