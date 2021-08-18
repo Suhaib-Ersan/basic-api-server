@@ -3,19 +3,13 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-  createFood,
-  getAllFood,
-  getOneFood,
-  updateFood,
-  deleteFood,
-} = require('../../business/routes-implantation.js');
+const { Foods } = require('../models/index.model.js');
 
-router.post('/food', createFood);
-router.get('/food', getAllFood);
-router.get('/food/:id', getOneFood);
-router.put('/food/:id', updateFood);
-router.delete('/food/:id', deleteFood);
+router.post('/food', Foods.create); // creates one food obj
+router.get('/food', Foods.getAll); // gets all food objs
+router.get('/food/:id', Foods.getOne); // gets one food obj
+router.put('/food/:id', Foods.update); // updates one food obj
+router.delete('/food/:id', Foods.delete); // deletes one food obj
 
 
 module.exports = router;

@@ -1,13 +1,27 @@
 'use strict';
 
-const POSTGRES_URI = process.env.POSTGRES_URI || 'postgres://localhost/postgres';
-// const POSTGRES_URI = process.env.POSTGRES_URI || "postgres://postgres@localhost:5432/Foods";
+// const POSTGRES_URI = process.env.POSTGRES_URI || 'postgres://localhost/foods';
+const POSTGRES_URI = process.env.POSTGRES_URI || "postgres://suhaib@localhost:5432/foods";
 const { Sequelize, DataTypes } = require('sequelize');
+
 const foods = require('./foods.model.js');
+const clothes = require('./clothes.model.js');
+
+const Collection = require('./lib/collection.js');
+
+const foodsModel = foods(sequelize, DataTypes);
+const clothesModel = clothes(sequelize, DataTypes);
+
+// customerModel.hasMany(orderModel, { sourceKey: 'id', foreignKey: 'customerId' });
+// orderModel.belongsTo(customerModel, { foreignKey: 'customerId', targetKey: 'id' });
+
+const foodsCollection = new Collection(foodsModel);
+const clothesCollection = new Collection(clothesModel);
 
 var sequelize = new Sequelize(POSTGRES_URI, {});
 
 module.exports = {
     db: sequelize,
-    Foods: foods(sequelize, DataTypes),
+    Foods: foodsCollection,
+    Clothes: clothesCollection
 }
