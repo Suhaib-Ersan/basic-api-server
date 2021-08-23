@@ -5,37 +5,32 @@ class Collection {
     // the model should be a valid sequelize model
     this.model = model;
   }
-
-  async create(req, res) {
-    let modelInfo = req.body;
+  // needs req.body
+  async create(modelInfo) {
     let model = await this.model.create(modelInfo);
-    res.status(201).json(model);
+    return model;
   }
   
-  async getAll(req, res) {
+  async getAll() {
     let allModels = await this.model.findAll();
-    res.status(200).send(allModels);
+    return allModels;
   }
-  
-  async getOne(req, res) {
-    let id = parseInt(req.params.id);
+  // needs req.params.id
+  async getOne(id) {
     let model = await this.model.findOne({ where: { id } });
-    res.status(200).json(model);
+    return model;
   }
   
   
-  async update(req, res) {
-    let id = parseInt(req.params.id);
-    let newModelInfo = req.body;
+  async update(id,newModelInfo) {
     let model = await this.model.findOne({ where: { id } });
     let updateModel = await model.update(newModelInfo);
-    res.status(200).json(updateModel);
+    return updateModel;
   }
   
-  async delete(req, res) {
-    let id = parseInt(req.params.id);
+  async delete(id) {
     let deleteModel = await this.model.destroy({ where: { id } });
-    res.status(204).json(deleteModel);
+    return deleteModel;
   }
   
 }

@@ -9,23 +9,17 @@ const loggerMiddleware = require('./middleware/logger.js');
 
 const foodRoutes = require('./routes/foods.js');
 const clothesRoutes = require('./routes/clothes.js');
-// const clothesRoutes = require('./routes/clothes.js');
 
 
 server.use(express.json());
 server.use(loggerMiddleware);
 
 server.use(foodRoutes);
-// server.use(clothesRoutes);
+server.use(clothesRoutes);
 
 server.get('/test', (req, res) => {
   res.status(200).send("server is live")
 })
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 // const POSTGRES_URI = process.env.POSTGRES_URI || 'postgres://localhost/foods';
-const POSTGRES_URI = process.env.POSTGRES_URI || "postgres://suhaib@localhost:5432/foods";
+const POSTGRES_URI = process.env.POSTGRES_URI || "postgres://suhaib@localhost:5432/class03-04";
 const { Sequelize, DataTypes } = require('sequelize');
 var sequelize = new Sequelize(POSTGRES_URI, {});
 
