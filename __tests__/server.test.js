@@ -15,9 +15,9 @@ describe("express server", () => {
     // assert
     expect(res.status).toBe(status);
   });
-  it("should give status 404 because of the use of delete on /food, which is a bad method", async () => {
+  it("should give status 404 because of the use of delete on /foods, which is a bad method", async () => {
     // arrange
-    let route = "/food";
+    let route = "/foods";
     let status = 404;
     // act
     const res = await request.delete(route);
@@ -30,7 +30,7 @@ describe("express server", () => {
   // trying to create a food object to the database 
   it("should give status 201 and return a food object with foodName: baglawa and foodDescription: zaky", async () => {
     // arrange
-    let route = "/food";
+    let route = "/foods";
     let status = 201;
     let objJson = {
       "foodName": "baglawa",
@@ -51,7 +51,7 @@ describe("express server", () => {
   // trying to get all foods from the database 
   it("should give status 200 and receive an object", async () => {
     // arrange
-    let route = "/food";
+    let route = "/foods";
     let status = 200;
     // act
     const res = await request.get(route);
@@ -63,7 +63,7 @@ describe("express server", () => {
   // trying to get one food object from the database
   it("should give status 201 and receive an object", async () => {
     // arrange
-    let route = `/food/${idOfObj}`;
+    let route = `/foods/${idOfObj}`;
     let status = 200;
     // act
     const res = await request.get(route);
@@ -77,7 +77,7 @@ describe("express server", () => {
   // trying to update food object we created earlier
   it("should give status 201 and receive an object", async () => {
     // arrange
-    let route = `/food/${idOfObj}`;
+    let route = `/foods/${idOfObj}`;
     let status = 200;
     let objJson = {
       "foodName": "bread",
@@ -95,7 +95,7 @@ describe("express server", () => {
   // 
   it("should give status 201 and receive an object", async () => {
     // arrange
-    let route = `/food/${idOfObj}`;
+    let route = `/foods/${idOfObj}`;
     let status = 204;
     // act
     const res = await request.delete(route);
